@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import FirebaseDatabase
 class FormViewController: UIViewController {
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var foodLoc: UITextField!
@@ -46,8 +47,10 @@ class FormViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nvc = segue.destination as? UINavigationController
         let vc = nvc?.topViewController as? ViewController
-        vc?.currPoint = formPoint
-        vc?.points.append(formPoint)
+        let db = Database.database().reference()
+        db.child("locationPoints").childByAutoId().setValue(["long": Double(formPoint.coordinate.longitude), "date": formPoint.date.description, "lat": Double(formPoint.coordinate.latitude), "desc": formPoint.subtitle, "opt": formPoint.opt, "title": formPoint.title, "locationName": formPoint.locationName])
+        //vc?.currPoint = formPoint
+        //vc?.points.append(formPoint)
     }
     
 

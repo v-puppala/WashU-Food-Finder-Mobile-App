@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-
+import FirebaseDatabase
 class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDelegate {
 
     @IBOutlet weak var optionSwitch: UISwitch!
@@ -73,12 +73,45 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         
         
     }
+    static func formatDate(s: String) ->Date?
+    {
+        
+       let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+        let date = dateFormatter.date(from:s)
+        return date
+    }
    override func viewWillAppear(_ animated: Bool) {
-        for point in points
+    let db = Database.database().reference()
+    db.child("locationPoints").observeSingleEvent(of: .value)
+    {(snapshot) in
+        if let dbpoints = snapshot.value as? [String:[String:Any]]
         {
-            option = point.opt
-            myMap.addAnnotation(point)
+            for p in dbpoints
+            {
+                let dict = p.value
+                let newTitle = dict["title"] as! String
+                let newLocation = dict["locationName"] as! String
+                let newLat = dict["lat"] as! Double
+                let newLong = dict["long"] as! Double
+                let newCoord = CLLocationCoordinate2D(latitude: newLat , longitude: newLong)
+                let newDate = dict["date"] as! String
+                let newDateObj = ViewController.formatDate(s: newDate)!
+                let newSubtitle = dict["desc"] as! String
+                let newOpt = dict["opt"] as! String
+                let newLocationPoint = LocationPoint(title: newTitle, locationName: newLocation, coordinate:newCoord , date: newDateObj, subtitle: newSubtitle, opt: newOpt)
+                self.myMap.addAnnotation(newLocationPoint)
+                
+            }
+
+ 
         }
+        
+        
+        
+    }
+
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseId = "pin"
@@ -87,11 +120,12 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
             pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
             pinView!.rightCalloutAccessoryView = UIButton(type: .infoDark)
-            if option == "free"
+            let lp = annotation as? LocationPoint
+            if lp!.opt == "free"
             {
                 pinView!.markerTintColor = .green
             }
-            else if option == "rare"
+            else if lp!.opt == "rare"
             {
                 pinView!.markerTintColor = .purple
             }
@@ -109,13 +143,11 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         return pinView
     }
 
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("tapped on pin ")
-    }
+    /*func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    }*/
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-           // if let doSomething = view.annotation?.title! {
                 let ann = view.annotation as? LocationPoint
                 let t = ann?.title
                 let l = ann?.locationName
@@ -125,8 +157,7 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
                 let o = ann?.opt
                 selctedPoint = LocationPoint(title: t!, locationName: l!, coordinate: c!, date: d!, subtitle: s!,opt: o!)
                 performSegue(withIdentifier: "gotodetail", sender: Any.self)
-               print("do something")
-            //}
+               
         }
       }
     

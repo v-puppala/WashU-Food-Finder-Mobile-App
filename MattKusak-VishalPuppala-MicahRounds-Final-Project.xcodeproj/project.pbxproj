@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		116033B08E9036F7153AD860 /* Pods_MattKusak_VishalPuppala_MicahRounds_Final_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0701E1E03DEEBBDA66C00F14 /* Pods_MattKusak_VishalPuppala_MicahRounds_Final_Project.framework */; };
 		5151511324C6B6EC0024AFE0 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5151511224C6B6EC0024AFE0 /* EventDetailView.swift */; };
+		518923FC24C6D6030062D8F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 518923FB24C6D6030062D8F0 /* GoogleService-Info.plist */; };
 		51E03C4824C66871001BA318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E03C4724C66871001BA318 /* AppDelegate.swift */; };
 		51E03C4A24C66871001BA318 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E03C4924C66871001BA318 /* SceneDelegate.swift */; };
 		51E03C4C24C66871001BA318 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E03C4B24C66871001BA318 /* ViewController.swift */; };
@@ -19,7 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0701E1E03DEEBBDA66C00F14 /* Pods_MattKusak_VishalPuppala_MicahRounds_Final_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MattKusak_VishalPuppala_MicahRounds_Final_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5151511224C6B6EC0024AFE0 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		518923FB24C6D6030062D8F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		51E03C4424C66871001BA318 /* MattKusak-VishalPuppala-MicahRounds-Final-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MattKusak-VishalPuppala-MicahRounds-Final-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E03C4724C66871001BA318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51E03C4924C66871001BA318 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +34,8 @@
 		51E03C5524C66878001BA318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51E03C5B24C6702B001BA318 /* LocationPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPoint.swift; sourceTree = "<group>"; };
 		51E03C5D24C6822B001BA318 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		D11CCA0DA8CD0207DDD288FC /* Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project.debug.xcconfig"; path = "Target Support Files/Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project/Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project.debug.xcconfig"; sourceTree = "<group>"; };
+		E37D69F3B94E4CA3A158BAED /* Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project.release.xcconfig"; path = "Target Support Files/Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project/Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116033B08E9036F7153AD860 /* Pods_MattKusak_VishalPuppala_MicahRounds_Final_Project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +55,8 @@
 			children = (
 				51E03C4624C66871001BA318 /* MattKusak-VishalPuppala-MicahRounds-Final-Project */,
 				51E03C4524C66871001BA318 /* Products */,
+				B907FBCFA7E53E088FE09F54 /* Pods */,
+				9E201459AAB45156AE5AE4CD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,8 +81,26 @@
 				51E03C5024C66878001BA318 /* Assets.xcassets */,
 				51E03C5224C66878001BA318 /* LaunchScreen.storyboard */,
 				51E03C5524C66878001BA318 /* Info.plist */,
+				518923FB24C6D6030062D8F0 /* GoogleService-Info.plist */,
 			);
 			path = "MattKusak-VishalPuppala-MicahRounds-Final-Project";
+			sourceTree = "<group>";
+		};
+		9E201459AAB45156AE5AE4CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0701E1E03DEEBBDA66C00F14 /* Pods_MattKusak_VishalPuppala_MicahRounds_Final_Project.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B907FBCFA7E53E088FE09F54 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D11CCA0DA8CD0207DDD288FC /* Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project.debug.xcconfig */,
+				E37D69F3B94E4CA3A158BAED /* Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 51E03C5824C66879001BA318 /* Build configuration list for PBXNativeTarget "MattKusak-VishalPuppala-MicahRounds-Final-Project" */;
 			buildPhases = (
+				006F6255C2688CDDDB4BD966 /* [CP] Check Pods Manifest.lock */,
 				51E03C4024C66871001BA318 /* Sources */,
 				51E03C4124C66871001BA318 /* Frameworks */,
 				51E03C4224C66871001BA318 /* Resources */,
+				D6AD585B2CB9BC9389801EA9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,12 +164,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				51E03C5424C66878001BA318 /* LaunchScreen.storyboard in Resources */,
+				518923FC24C6D6030062D8F0 /* GoogleService-Info.plist in Resources */,
 				51E03C5124C66878001BA318 /* Assets.xcassets in Resources */,
 				51E03C4F24C66871001BA318 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		006F6255C2688CDDDB4BD966 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6AD585B2CB9BC9389801EA9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project/Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project/Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project/Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		51E03C4024C66871001BA318 /* Sources */ = {
@@ -294,6 +366,7 @@
 		};
 		51E03C5924C66879001BA318 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D11CCA0DA8CD0207DDD288FC /* Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -311,6 +384,7 @@
 		};
 		51E03C5A24C66879001BA318 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E37D69F3B94E4CA3A158BAED /* Pods-MattKusak-VishalPuppala-MicahRounds-Final-Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
