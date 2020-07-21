@@ -16,6 +16,7 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     var points:[LocationPoint] = []
     var currCoord:CLLocationCoordinate2D = CLLocationCoordinate2D()
     var currPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "")
+    var selctedPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "")
     var currColor:UIColor = .green
     var option:String = "free"
     override func viewDidLoad() {
@@ -58,9 +59,17 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         //adds location object as annotation
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let form = segue.destination as? FormViewController
-        form?.coord = currCoord
-        form?.fOpt = option
+        if segue.identifier == "gotoform"
+        {
+            let form = segue.destination as? FormViewController
+            form?.coord = currCoord
+            form?.fOpt = option
+        }
+        else if segue.identifier == "gotodetail"
+        {
+            let detail = segue.destination as? EventDetailView
+            detail?.detailLoc = selctedPoint
+        }
         
         
     }
@@ -106,10 +115,18 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            if let doSomething = view.annotation?.title! {
+           // if let doSomething = view.annotation?.title! {
+                let ann = view.annotation as? LocationPoint
+                let t = ann?.title
+                let l = ann?.locationName
+                let c = ann?.coordinate
+                let d = ann?.date
+                let s = ann?.subtitle
+                let o = ann?.opt
+                selctedPoint = LocationPoint(title: t!, locationName: l!, coordinate: c!, date: d!, subtitle: s!,opt: o!)
                 performSegue(withIdentifier: "gotodetail", sender: Any.self)
                print("do something")
-            }
+            //}
         }
       }
     
