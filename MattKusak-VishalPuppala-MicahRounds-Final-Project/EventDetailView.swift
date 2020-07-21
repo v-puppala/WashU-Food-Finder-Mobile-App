@@ -9,11 +9,12 @@
 import UIKit
 import MapKit
 class EventDetailView: UIViewController {
-    var detailLoc: LocationPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "")
+    var detailLoc: LocationPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "", path: "")
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var locLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var foodImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         let df = DateFormatter()
@@ -22,6 +23,10 @@ class EventDetailView: UIViewController {
         locLabel.text = detailLoc.locationName
         endDateLabel.text = "Lasts Until: "+df.string(from: detailLoc.date)
         descriptionLabel.text = detailLoc.subtitle
+        let url = URL(string: detailLoc.path)
+        let imageData = try? Data(contentsOf: url!)
+        foodImage.image = UIImage(data: imageData!)
+        
         // Do any additional setup after loading the view.
     }
     

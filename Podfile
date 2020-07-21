@@ -8,5 +8,6 @@ target 'MattKusak-VishalPuppala-MicahRounds-Final-Project' do
   # Pods for MattKusak-VishalPuppala-MicahRounds-Final-Project
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 
 end

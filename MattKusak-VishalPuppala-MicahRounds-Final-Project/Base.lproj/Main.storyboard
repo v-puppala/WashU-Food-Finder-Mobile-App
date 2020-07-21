@@ -86,6 +86,9 @@
                                 <state key="normal" title="Upload Image">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="addImage:" destination="MdA-69-0MZ" eventType="touchUpInside" id="L1b-h6-Ca6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNB-VY-o7A">
                                 <rect key="frame" x="93" y="738" width="168" height="49"/>
@@ -201,6 +204,7 @@
                         <outlet property="eventDescription" destination="1hM-zK-4b7" id="kVv-Kg-63C"/>
                         <outlet property="eventTitle" destination="Yfy-pj-Dty" id="9Un-nq-wqg"/>
                         <outlet property="foodLoc" destination="CZG-pH-lDF" id="hD2-cB-SCy"/>
+                        <outlet property="formImage" destination="dTD-NP-UVD" id="8Kb-HF-Bij"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="99G-iq-cUj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -243,6 +247,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gW2-EE-gb2">
+                                <rect key="frame" x="50" y="460" width="288" height="251"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Dot-eY-mJZ"/>
@@ -251,6 +259,7 @@
                     <connections>
                         <outlet property="descriptionLabel" destination="HQq-dH-yiE" id="S5K-Ed-zJc"/>
                         <outlet property="endDateLabel" destination="HwN-KN-e1o" id="pRe-QW-Y0R"/>
+                        <outlet property="foodImage" destination="gW2-EE-gb2" id="gyo-d6-DdH"/>
                         <outlet property="locLabel" destination="rKj-CT-2Qt" id="yCa-FX-VvT"/>
                         <outlet property="titleLabel" destination="ps5-DB-U8l" id="aZJ-o9-Zqw"/>
                     </connections>

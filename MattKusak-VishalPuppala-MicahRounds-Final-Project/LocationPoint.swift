@@ -16,12 +16,14 @@ class LocationPoint: NSObject, MKAnnotation
     let date:Date
     let subtitle: String?
     let opt:String
-    init(title: String, locationName: String, coordinate: CLLocationCoordinate2D,date:Date,subtitle: String,opt:String) {
+    let path:String
+    init(title: String, locationName: String, coordinate: CLLocationCoordinate2D,date:Date,subtitle: String,opt:String,path:String) {
         self.title = title
         self.locationName = locationName
         self.coordinate = coordinate
         self.date = date
         self.subtitle = subtitle
         self.opt = opt
+        self.path = path
     }
 }

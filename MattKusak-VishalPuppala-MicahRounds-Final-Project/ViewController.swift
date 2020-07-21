@@ -15,8 +15,8 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     @IBOutlet weak var myMap: MKMapView!
     var points:[LocationPoint] = []
     var currCoord:CLLocationCoordinate2D = CLLocationCoordinate2D()
-    var currPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "")
-    var selctedPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "")
+    var currPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "", path: "")
+    var selctedPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "", path: "")
     var currColor:UIColor = .green
     var option:String = "free"
     override func viewDidLoad() {
@@ -48,7 +48,7 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     @IBAction func addLocation(_ sender: Any) {
     }
     /*
-     right now handleTap just adds a marker at the tapped location with the placeholder data
+     takes user to form and holds on to coordinates associated with tap location on map
      */
     @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
         //print("tap")
@@ -77,7 +77,7 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     {
         
        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
         let date = dateFormatter.date(from:s)
         return date
@@ -100,7 +100,8 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
                 let newDateObj = ViewController.formatDate(s: newDate)!
                 let newSubtitle = dict["desc"] as! String
                 let newOpt = dict["opt"] as! String
-                let newLocationPoint = LocationPoint(title: newTitle, locationName: newLocation, coordinate:newCoord , date: newDateObj, subtitle: newSubtitle, opt: newOpt)
+                let newPath = dict["path"] as! String
+                let newLocationPoint = LocationPoint(title: newTitle, locationName: newLocation, coordinate:newCoord , date: newDateObj, subtitle: newSubtitle, opt: newOpt, path: newPath)
                 self.myMap.addAnnotation(newLocationPoint)
                 
             }
@@ -155,7 +156,8 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
                 let d = ann?.date
                 let s = ann?.subtitle
                 let o = ann?.opt
-                selctedPoint = LocationPoint(title: t!, locationName: l!, coordinate: c!, date: d!, subtitle: s!,opt: o!)
+                let p = ann?.path
+                selctedPoint = LocationPoint(title: t!, locationName: l!, coordinate: c!, date: d!, subtitle: s!,opt: o!,path: p!)
                 performSegue(withIdentifier: "gotodetail", sender: Any.self)
                
         }
