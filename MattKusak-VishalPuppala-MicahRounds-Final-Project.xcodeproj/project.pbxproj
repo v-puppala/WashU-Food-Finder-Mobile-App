@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5151511324C6B6EC0024AFE0 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5151511224C6B6EC0024AFE0 /* EventDetailView.swift */; };
 		51E03C4824C66871001BA318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E03C4724C66871001BA318 /* AppDelegate.swift */; };
 		51E03C4A24C66871001BA318 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E03C4924C66871001BA318 /* SceneDelegate.swift */; };
 		51E03C4C24C66871001BA318 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E03C4B24C66871001BA318 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5151511224C6B6EC0024AFE0 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		51E03C4424C66871001BA318 /* MattKusak-VishalPuppala-MicahRounds-Final-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MattKusak-VishalPuppala-MicahRounds-Final-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E03C4724C66871001BA318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51E03C4924C66871001BA318 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				51E03C5D24C6822B001BA318 /* FormViewController.swift */,
 				51E03C5B24C6702B001BA318 /* LocationPoint.swift */,
 				51E03C4D24C66871001BA318 /* Main.storyboard */,
+				5151511224C6B6EC0024AFE0 /* EventDetailView.swift */,
 				51E03C5024C66878001BA318 /* Assets.xcassets */,
 				51E03C5224C66878001BA318 /* LaunchScreen.storyboard */,
 				51E03C5524C66878001BA318 /* Info.plist */,
@@ -146,6 +149,7 @@
 			files = (
 				51E03C4C24C66871001BA318 /* ViewController.swift in Sources */,
 				51E03C5C24C6702B001BA318 /* LocationPoint.swift in Sources */,
+				5151511324C6B6EC0024AFE0 /* EventDetailView.swift in Sources */,
 				51E03C4824C66871001BA318 /* AppDelegate.swift in Sources */,
 				51E03C5E24C6822B001BA318 /* FormViewController.swift in Sources */,
 				51E03C4A24C66871001BA318 /* SceneDelegate.swift in Sources */,

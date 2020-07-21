@@ -13,8 +13,11 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
 
     @IBOutlet weak var optionSwitch: UISwitch!
     @IBOutlet weak var myMap: MKMapView!
+    var points:[LocationPoint] = []
     var currCoord:CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var currPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "")
     var currColor:UIColor = .green
+    var option:String = "free"
     override func viewDidLoad() {
         super.viewDidLoad()
          var mapRegion:MKCoordinateRegion = MKCoordinateRegion()
@@ -32,12 +35,12 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     @IBAction func switchFoodOption(_ sender: Any) {
         if optionSwitch.isOn
         {
-            currColor = .purple
+            option = "rare"
             // change to rare food option
         }
         else
         {
-            currColor = .green
+            option = "free"
             //change to free food option
         }
     }
@@ -51,27 +54,43 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         let location = gestureRecognizer.location(in: myMap)
         //converts to coordinate
        currCoord = myMap.convert(location, toCoordinateFrom: myMap)
-        //performSegue(withIdentifier: "gotoform", sender: (Any).self)
-        let annotation = LocationPoint(title: "food", locationName: "duc", coordinate: currCoord, date: "07-20-20", subtitle: "taco")
+        performSegue(withIdentifier: "gotoform", sender: (Any).self)
         //adds location object as annotation
-        myMap.addAnnotation(annotation)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let form = segue.destination as? FormViewController
         form?.coord = currCoord
+        form?.fOpt = option
         
         
     }
-    
+   override func viewWillAppear(_ animated: Bool) {
+        for point in points
+        {
+            option = point.opt
+            myMap.addAnnotation(point)
+        }
+    }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        //guard annotation is MKAnnotation else { print("no mkpointannotaions"); return nil }
         let reuseId = "pin"
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKMarkerAnnotationView
         if pinView == nil {
             pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
             pinView!.rightCalloutAccessoryView = UIButton(type: .infoDark)
-            pinView!.markerTintColor = currColor
+            if option == "free"
+            {
+                pinView!.markerTintColor = .green
+            }
+            else if option == "rare"
+            {
+                pinView!.markerTintColor = .purple
+            }
+            else
+            {
+                pinView!.markerTintColor = .black
+            }
+           
             
             
         }
@@ -88,6 +107,7 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             if let doSomething = view.annotation?.title! {
+                performSegue(withIdentifier: "gotodetail", sender: Any.self)
                print("do something")
             }
         }
