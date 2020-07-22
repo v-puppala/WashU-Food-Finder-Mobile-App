@@ -117,7 +117,13 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
                     let newOpt = dict["opt"] as! String
                     let newPath = dict["path"] as! String
                     let newLocationPoint = LocationPoint(title: newTitle, locationName: newLocation, coordinate:newCoord , date: newDateObj, subtitle: newSubtitle, opt: newOpt, path: newPath)
-                    self.myMap.addAnnotation(newLocationPoint)
+                    let now = Date()
+                    //only load events that haven't ended
+                    if now.compare(newDateObj).rawValue == -1
+                    {
+                        self.myMap.addAnnotation(newLocationPoint)
+                    }
+                    
                 }
             }
         }
