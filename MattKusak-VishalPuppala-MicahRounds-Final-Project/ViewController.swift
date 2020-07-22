@@ -12,8 +12,10 @@ import FirebaseDatabase
 import CoreLocation
 class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDelegate,CLLocationManagerDelegate {
 
+    @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var optionSwitch: UISwitch!
     @IBOutlet weak var myMap: MKMapView!
+    var isLaunched:Bool = false
     let locationManager = CLLocationManager()
     var points:[LocationPoint] = []
     var currCoord:CLLocationCoordinate2D = CLLocationCoordinate2D()
@@ -28,6 +30,17 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         mapRegion.center = coordinate
         mapRegion.span.latitudeDelta = 0.025
         mapRegion.span.longitudeDelta = 0.025
+        isLaunched = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if isLaunched == false
+        {
+            infoLabel.text = "Tap '+' to manually add a location, or tap the pin icon to use your current location..."
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+        }
+        else{
+            infoLabel.isHidden = true
+        }
+        
+        
         myMap.delegate = self
         myMap.setRegion(mapRegion, animated: true)
         locationManager.delegate = self
@@ -52,9 +65,14 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         let gRecognizer = UITapGestureRecognizer(target: self, action:#selector(self.handleTap))
         gRecognizer.delegate = self
         myMap.addGestureRecognizer(gRecognizer)
+        if isLaunched == false
+        {
+            infoLabel.text = "Tap on the part of the map where the event is located..."
+        }
+        
     }
     @IBAction func userLocation(_ sender: Any) {
-        
+        infoLabel.isHidden = true
         performSegue(withIdentifier: "gotoform", sender: (Any).self)
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -65,6 +83,7 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
      takes user to form and holds on to coordinates associated with tap location on map
      */
     @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
+        infoLabel.isHidden = true
         locationManager.stopUpdatingLocation()
         //print("tap")
         let location = gestureRecognizer.location(in: myMap)
@@ -177,7 +196,5 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
                
         }
       }
-    
-
 }
 
