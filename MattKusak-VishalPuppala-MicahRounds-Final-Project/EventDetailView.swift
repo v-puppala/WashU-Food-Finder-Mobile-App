@@ -23,9 +23,14 @@ class EventDetailView: UIViewController {
         locLabel.text = detailLoc.locationName
         endDateLabel.text = "Lasts Until: "+df.string(from: detailLoc.date)
         descriptionLabel.text = detailLoc.subtitle
-        let url = URL(string: detailLoc.path)
-        let imageData = try? Data(contentsOf: url!)
-        foodImage.image = UIImage(data: imageData!)
+        if let url = URL(string: detailLoc.path)
+        {
+            if let imageData = try? Data(contentsOf: url)
+            {
+                foodImage.image = UIImage(data: imageData)
+            }
+        }
+        
         
         // Do any additional setup after loading the view.
     }

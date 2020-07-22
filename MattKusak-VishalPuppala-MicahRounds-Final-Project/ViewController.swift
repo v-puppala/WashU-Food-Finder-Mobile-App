@@ -9,10 +9,12 @@
 import UIKit
 import MapKit
 import FirebaseDatabase
-class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDelegate {
+import CoreLocation
+class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDelegate,CLLocationManagerDelegate {
 
     @IBOutlet weak var optionSwitch: UISwitch!
     @IBOutlet weak var myMap: MKMapView!
+    let locationManager = CLLocationManager()
     var points:[LocationPoint] = []
     var currCoord:CLLocationCoordinate2D = CLLocationCoordinate2D()
     var currPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "", path: "")
@@ -28,9 +30,9 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         mapRegion.span.longitudeDelta = 0.025
         myMap.delegate = self
         myMap.setRegion(mapRegion, animated: true)
-        let gRecognizer = UITapGestureRecognizer(target: self, action:#selector(self.handleTap))
-        gRecognizer.delegate = self
-        myMap.addGestureRecognizer(gRecognizer)
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         // Do any additional setup after loading the view.
     }
     @IBAction func switchFoodOption(_ sender: Any) {
@@ -45,12 +47,25 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
             //change to free food option
         }
     }
+    //enables tap handler for manually entered locations
     @IBAction func addLocation(_ sender: Any) {
+        let gRecognizer = UITapGestureRecognizer(target: self, action:#selector(self.handleTap))
+        gRecognizer.delegate = self
+        myMap.addGestureRecognizer(gRecognizer)
+    }
+    @IBAction func userLocation(_ sender: Any) {
+        
+        performSegue(withIdentifier: "gotoform", sender: (Any).self)
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
+        currCoord = location.coordinate
     }
     /*
      takes user to form and holds on to coordinates associated with tap location on map
      */
     @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
+        locationManager.stopUpdatingLocation()
         //print("tap")
         let location = gestureRecognizer.location(in: myMap)
         //converts to coordinate
@@ -85,33 +100,27 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
    override func viewWillAppear(_ animated: Bool) {
     let db = Database.database().reference()
     db.child("locationPoints").observeSingleEvent(of: .value)
-    {(snapshot) in
-        if let dbpoints = snapshot.value as? [String:[String:Any]]
-        {
-            for p in dbpoints
+        {(snapshot) in
+            if let dbpoints = snapshot.value as? [String:[String:Any]]
             {
-                let dict = p.value
-                let newTitle = dict["title"] as! String
-                let newLocation = dict["locationName"] as! String
-                let newLat = dict["lat"] as! Double
-                let newLong = dict["long"] as! Double
-                let newCoord = CLLocationCoordinate2D(latitude: newLat , longitude: newLong)
-                let newDate = dict["date"] as! String
-                let newDateObj = ViewController.formatDate(s: newDate)!
-                let newSubtitle = dict["desc"] as! String
-                let newOpt = dict["opt"] as! String
-                let newPath = dict["path"] as! String
-                let newLocationPoint = LocationPoint(title: newTitle, locationName: newLocation, coordinate:newCoord , date: newDateObj, subtitle: newSubtitle, opt: newOpt, path: newPath)
-                self.myMap.addAnnotation(newLocationPoint)
-                
+                for p in dbpoints
+                {
+                    let dict = p.value
+                    let newTitle = dict["title"] as! String
+                    let newLocation = dict["locationName"] as! String
+                    let newLat = dict["lat"] as! Double
+                    let newLong = dict["long"] as! Double
+                    let newCoord = CLLocationCoordinate2D(latitude: newLat , longitude: newLong)
+                    let newDate = dict["date"] as! String
+                    let newDateObj = ViewController.formatDate(s: newDate)!
+                    let newSubtitle = dict["desc"] as! String
+                    let newOpt = dict["opt"] as! String
+                    let newPath = dict["path"] as! String
+                    let newLocationPoint = LocationPoint(title: newTitle, locationName: newLocation, coordinate:newCoord , date: newDateObj, subtitle: newSubtitle, opt: newOpt, path: newPath)
+                    self.myMap.addAnnotation(newLocationPoint)
+                }
             }
-
- 
         }
-        
-        
-        
-    }
 
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

@@ -26,7 +26,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="T83-8G-zQK">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Use my Location" id="KaI-PJ-X9N"/>
+                        <barButtonItem key="leftBarButtonItem" title="Use my Location" id="KaI-PJ-X9N">
+                            <connections>
+                                <action selector="userLocation:" destination="BYZ-38-t0r" id="fsq-nT-hkR"/>
+                            </connections>
+                        </barButtonItem>
                         <switch key="titleView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="vGg-Wc-9JF">
                             <rect key="frame" x="152.33333333333334" y="6.6666666666666679" width="51" height="31.000000000000004"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
