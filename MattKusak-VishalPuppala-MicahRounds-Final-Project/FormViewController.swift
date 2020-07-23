@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import FirebaseDatabase
 import FirebaseStorage
-class FormViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class FormViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var formImage: UIImageView!
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var foodLoc: UITextField!
@@ -24,10 +24,9 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate & UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
+    //I'm reusing some imagePicker stuff from my lab3 - Micah
     @IBAction func addImage(_ sender: Any) {
         let img = UIImagePickerController()
         img.delegate = self
@@ -39,12 +38,15 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate & UI
         if let img = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
             formImage.image = img
+            //I used code in this firebase article to upload image files
+            //https://firebase.google.com/docs/storage/ios/upload-files
+            //this video was very useful for showing how to convert an image into a data object,also shows how to make file names unique using uuidString
+            //https://www.youtube.com/watch?v=b1vrjt7Nvb0&t=1524s
             let imgdata = formImage.image?.jpegData(compressionQuality: 0.8)
             let id = NSUUID().uuidString
             let storageRef = Storage.storage().reference().child(id+".jpg")
             let uploadTask = storageRef.putData(imgdata!, metadata: nil) { (metadata, error) in
               guard let metadata = metadata else {
-                // Uh-oh, an error occurred!
                 return
               }
               storageRef.downloadURL { (url, error) in
@@ -84,9 +86,14 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate & UI
         let db = Database.database().reference()
         if formPoint.title != "" && formPoint.locationName != "" && formPoint.coordinate.latitude != 0 && formPoint.coordinate.longitude != 0
         {
+            //I used functions child() and childByAutoId() from this firebase article, which also shoes how to add a dictionary to database
+            //https://firebase.google.com/docs/database/ios/read-and-write
              db.child("locationPoints").childByAutoId().setValue(["long": Double(formPoint.coordinate.longitude), "date": formPoint.date.description, "lat": Double(formPoint.coordinate.latitude), "desc": formPoint.subtitle, "opt": formPoint.opt, "title": formPoint.title, "locationName": formPoint.locationName, "path":formPoint.path])
         }
         else{
+            //something to look for in console if something isnt working
+            //if the user does not allow current location and tries to use current location feature, this will print
+            //this should probably be fixed in the future.
             print("not enough data")
         }
        

@@ -17,6 +17,8 @@ class EventDetailView: UIViewController {
     @IBOutlet weak var foodImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //I used this article for the DatFormatter()
+        //https://stackoverflow.com/questions/35700281/date-format-in-swift
         let df = DateFormatter()
         df.dateFormat = "E d MMM y, h:mm a"
         titleLabel.text = detailLoc.title

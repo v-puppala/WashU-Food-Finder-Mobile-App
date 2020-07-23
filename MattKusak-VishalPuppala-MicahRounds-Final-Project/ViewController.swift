@@ -107,6 +107,8 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         
         
     }
+    //this post helped show how to format date objects into a string
+    //https://stackoverflow.com/questions/35700281/date-format-in-swift
     static func formatDate(s: String) ->Date?
     {
         
@@ -148,34 +150,35 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         }
 
     }
+    //this article was useful for showing how to add an info button to the marker
+    //https://www.hackingwithswift.com/example-code/location/how-to-add-a-button-to-an-mkmapview-annotation
+    //This article explains the MKMarkerAnnotationView, which works similarly to using pins but looks a little nicer IMO
+    //https://makeapppie.com/2018/02/20/use-markers-instead-of-pins-for-map-annotations/
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKMarkerAnnotationView
-        if pinView == nil {
-            pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.canShowCallout = true
-            pinView!.rightCalloutAccessoryView = UIButton(type: .infoDark)
+        var marker = mapView.dequeueReusableAnnotationView(withIdentifier: "marker") as? MKMarkerAnnotationView
+        if marker == nil {
+            marker = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "marker")
+            marker!.canShowCallout = true
+            marker!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             let lp = annotation as? LocationPoint
             if lp!.opt == "free"
             {
-                pinView!.markerTintColor = .green
+                marker!.markerTintColor = .green
             }
             else if lp!.opt == "rare"
             {
-                pinView!.markerTintColor = .purple
+                marker!.markerTintColor = .purple
             }
             else
             {
-                pinView!.markerTintColor = .black
+                //THIS SHOULD NOT HAPPEN
+                marker!.markerTintColor = .black
             }
-           
-            
-            
         }
         else {
-            pinView!.annotation = annotation
+            marker!.annotation = annotation
         }
-        return pinView
+        return marker
     }
 
     /*func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
