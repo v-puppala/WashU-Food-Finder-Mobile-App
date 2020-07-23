@@ -74,6 +74,15 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 //print(endDate.date)
                 formPoint = LocationPoint(title: eventTitle.text!, locationName: foodLoc.text!, coordinate: coord, date: endDate.date, subtitle: eventDescription.text!,opt: fOpt,path: imagePath)
             }
+            else
+            {
+                
+                let a = UIAlertController(title: "Cannot add event", message: "Please enter a date that has not passed yet.", preferredStyle: .alert)
+                a.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")
+                }))
+                self.present(a, animated: true, completion: nil)
+            }
         }
     }
     
@@ -95,6 +104,14 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             //if the user does not allow current location and tries to use current location feature, this will print
             //this should probably be fixed in the future.
             print("not enough data")
+            if formPoint.coordinate.latitude == 0.0 && formPoint.coordinate.longitude == 0.0
+            {
+                let a = UIAlertController(title: "Cannot add event", message: "You must allow location permissions in your settings", preferredStyle: .alert)
+                a.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")
+                }))
+                self.present(a, animated: true, completion: nil)
+            }
         }
        
         //vc?.currPoint = formPoint
