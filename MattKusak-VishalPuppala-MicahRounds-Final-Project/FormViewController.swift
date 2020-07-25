@@ -27,9 +27,13 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var formPoint:LocationPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "",path: "")
     override func viewDidLoad() {
         super.viewDidLoad()
+        let touchObject: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardRetreat) )
+               view.addGestureRecognizer(touchObject)
 
     }
-    
+    @objc override func keyboardRetreat(){
+       view.endEditing(true)
+    }
     //I'm reusing some imagePicker stuff from my lab3 - Micah
     @IBAction func addImage(_ sender: Any) {
         let img = UIImagePickerController()
