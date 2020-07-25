@@ -8,6 +8,7 @@
 
 import Foundation
 import MapKit
+//here's the framework for the annotation object
 class LocationPoint: NSObject, MKAnnotation
 {
     let title: String?
