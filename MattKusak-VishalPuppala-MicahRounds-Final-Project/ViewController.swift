@@ -12,24 +12,36 @@ import FirebaseDatabase
 import CoreLocation
 class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDelegate,CLLocationManagerDelegate {
 
+    //"tutorial" label
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var optionSwitch: UISwitch!
     @IBOutlet weak var myMap: MKMapView!
+    //state to determine if user has launched app before
     var isLaunched:Bool = false
+    //object for detecting location
     let locationManager = CLLocationManager()
+    //points array was used  as placeholder prior to integrating the database, this is not implemented anymore
     var points:[LocationPoint] = []
+    //holds coordinates of current location
     var currCoord:CLLocationCoordinate2D = CLLocationCoordinate2D()
+    //object to hold new location object when being created
     var currPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "", path: "")
+    //object to hold new location object that is to be viewed
     var selctedPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "", path: "")
     var currColor:UIColor = .green
+    //this is changed when the switch is moved
     var option:String = "free"
     override func viewDidLoad() {
         super.viewDidLoad()
+        //code to request location
          var mapRegion:MKCoordinateRegion = MKCoordinateRegion()
+        //region for map to zoom to centered at coordinate ranging within span property
          let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude:38.6421713 , longitude: -90.3071533)
         mapRegion.center = coordinate
         mapRegion.span.latitudeDelta = 0.025
         mapRegion.span.longitudeDelta = 0.025
+        //uncomment for debugging
+        //UserDefaults.standard.set(false, forKey: "launchedBefore")
         isLaunched = UserDefaults.standard.bool(forKey: "launchedBefore")
         if isLaunched == false
         {
@@ -42,7 +54,9 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         
         
         myMap.delegate = self
+        //sets map starting coordinates to region mentioned above
         myMap.setRegion(mapRegion, animated: true)
+        //starts reading in current location
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -62,8 +76,10 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     }
     //enables tap handler for manually entered locations
     @IBAction func addLocation(_ sender: Any) {
+        //set gesture recognizer associated with function handleTap
         let gRecognizer = UITapGestureRecognizer(target: self, action:#selector(self.handleTap))
         gRecognizer.delegate = self
+        //apply gesture recognizer to mapView
         myMap.addGestureRecognizer(gRecognizer)
         if isLaunched == false
         {
@@ -73,10 +89,12 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     }
     @IBAction func userLocation(_ sender: Any) {
         infoLabel.isHidden = true
+        //switch to form viewcontroller
         performSegue(withIdentifier: "gotoform", sender: (Any).self)
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
+        //update class location varible
         currCoord = location.coordinate
     }
     /*
@@ -84,21 +102,23 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
      */
     @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
         infoLabel.isHidden = true
+        //stop updating location to prevent currCoord from being set again
         locationManager.stopUpdatingLocation()
-        //print("tap")
+        //get raw location data
         let location = gestureRecognizer.location(in: myMap)
         //converts to coordinate
        currCoord = myMap.convert(location, toCoordinateFrom: myMap)
         performSegue(withIdentifier: "gotoform", sender: (Any).self)
-        //adds location object as annotation
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //we need to set the coordinate and option(free or rare) in FormViewController
         if segue.identifier == "gotoform"
         {
             let form = segue.destination as? FormViewController
             form?.coord = currCoord
             form?.fOpt = option
         }
+        //I'm actually not sure if this is needed since the entire object is stored in the db alrady
         else if segue.identifier == "gotodetail"
         {
             let detail = segue.destination as? EventDetailView
@@ -118,14 +138,20 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         let date = dateFormatter.date(from:s)
         return date
     }
+    /*rather than use viewdidLoad, this function updates when the view first loads and also when there is a segue to the view
+     (i.e. when the user finishes filling out the form)
+ */
    override func viewWillAppear(_ animated: Bool) {
     let db = Database.database().reference()
     db.child("locationPoints").observeSingleEvent(of: .value)
         {(snapshot) in
+            //here we have an array of dictionaries, where each dict holds a value for each property of a location object
             if let dbpoints = snapshot.value as? [String:[String:Any]]
             {
+                //each p is a dictionary (represents location/annotation object)
                 for p in dbpoints
                 {
+                    //parse out information into appropriate type
                     let dict = p.value
                     let newTitle = dict["title"] as! String
                     let newLocation = dict["locationName"] as! String
@@ -137,6 +163,7 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
                     let newSubtitle = dict["desc"] as! String
                     let newOpt = dict["opt"] as! String
                     let newPath = dict["path"] as! String
+                    //create annotation object from extracted database values
                     let newLocationPoint = LocationPoint(title: newTitle, locationName: newLocation, coordinate:newCoord , date: newDateObj, subtitle: newSubtitle, opt: newOpt, path: newPath)
                     let now = Date()
                     //only load events that haven't ended
@@ -159,8 +186,10 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         if marker == nil {
             marker = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "marker")
             marker!.canShowCallout = true
+            //creates the info button in the small description
             marker!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             let lp = annotation as? LocationPoint
+            //format color (I didn't end up needing currColor)
             if lp!.opt == "free"
             {
                 marker!.markerTintColor = .green
@@ -184,8 +213,10 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     /*func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
     }*/
 
+    //called when info button is clicked
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
+            //create location object from clicked annoation object and update selectedPoint object
                 let ann = view.annotation as? LocationPoint
                 let t = ann?.title
                 let l = ann?.locationName

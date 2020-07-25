@@ -16,10 +16,14 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var foodLoc: UITextField!
     @IBOutlet weak var endDate: UIDatePicker!
     @IBOutlet weak var eventDescription: UITextField!
+    //imagepath holds on to url once image is uploaded (we'll need it for detailView)
     var imagePath:String = ""
     var coord:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    //i was orignally going to make an id but theres a swift object that creates unique ids that's easier ot implement
     var objID:Int = 0
+    //this will either be free or rare
     var fOpt:String = ""
+    //once the form is filled out, we will have all the info to make a locationPoint object to put into DB
     var formPoint:LocationPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "",path: "")
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +48,7 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             //https://www.youtube.com/watch?v=b1vrjt7Nvb0&t=1524s
             let imgdata = formImage.image?.jpegData(compressionQuality: 0.8)
             let id = NSUUID().uuidString
+            //add file suffix
             let storageRef = Storage.storage().reference().child(id+".jpg")
             let uploadTask = storageRef.putData(imgdata!, metadata: nil) { (metadata, error) in
               guard let metadata = metadata else {
@@ -54,6 +59,7 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                   print("error getting downloadurl")
                   return
                 }
+                //set url for uploaded image
                 self.imagePath = downloadURL.absoluteString
                 print(self.imagePath)
               }
@@ -64,6 +70,7 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.dismiss(animated: true)
     }
     @IBAction func addLocation(_ sender: Any) {
+        //validating input
         if eventTitle.text != nil && foodLoc.text != nil && eventDescription.text != nil
         {
            let now = Date()
@@ -72,6 +79,7 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             if result.rawValue == -1
             {
                 //print(endDate.date)
+                //update object with form data included
                 formPoint = LocationPoint(title: eventTitle.text!, locationName: foodLoc.text!, coordinate: coord, date: endDate.date, subtitle: eventDescription.text!,opt: fOpt,path: imagePath)
             }
             else
@@ -91,12 +99,14 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nvc = segue.destination as? UINavigationController
+        //i couldn't get the nav bar to show up again after submitting an event without this line
         let vc = nvc?.topViewController as? ViewController
         let db = Database.database().reference()
         if formPoint.title != "" && formPoint.locationName != "" && formPoint.coordinate.latitude != 0 && formPoint.coordinate.longitude != 0
         {
             //I used functions child() and childByAutoId() from this firebase article, which also shoes how to add a dictionary to database
             //https://firebase.google.com/docs/database/ios/read-and-write
+            //upload our current object to db as dictionary
              db.child("locationPoints").childByAutoId().setValue(["long": Double(formPoint.coordinate.longitude), "date": formPoint.date.description, "lat": Double(formPoint.coordinate.latitude), "desc": formPoint.subtitle, "opt": formPoint.opt, "title": formPoint.title, "locationName": formPoint.locationName, "path":formPoint.path])
         }
         else{
