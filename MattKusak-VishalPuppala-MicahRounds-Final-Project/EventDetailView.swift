@@ -8,6 +8,18 @@
 
 import UIKit
 import MapKit
+extension UIViewController{
+    func pushKeyboard(){
+        let touchObject: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardRetreat) )
+        view.addGestureRecognizer(touchObject)
+        
+      
+        
+    }
+    @objc func keyboardRetreat(){
+                 view.endEditing(true)
+              }
+}
 class EventDetailView: UIViewController {
     var detailLoc: LocationPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "", path: "")
     @IBOutlet weak var titleLabel: UILabel!
@@ -15,8 +27,11 @@ class EventDetailView: UIViewController {
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var foodImage: UIImageView!
+  
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.pushKeyboard()
         //I used this article for the DatFormatter()
         //https://stackoverflow.com/questions/35700281/date-format-in-swift
         let df = DateFormatter()
@@ -33,8 +48,18 @@ class EventDetailView: UIViewController {
             }
         }
         
+
+      
+        
         
         // Do any additional setup after loading the view.
+    }
+  
+    //https://www.youtube.com/watch?v=YA20F7RJnwA was consulted for viewDidLayoutSubviews() function
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let scroll = UIScrollView(frame: view.bounds)
+        view.addSubview(scroll)
     }
     
 
