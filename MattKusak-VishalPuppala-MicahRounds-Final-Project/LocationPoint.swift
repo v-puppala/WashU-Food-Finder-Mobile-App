@@ -18,7 +18,9 @@ class LocationPoint: NSObject, MKAnnotation
     let subtitle: String?
     let opt:String
     let path:String
-    init(title: String, locationName: String, coordinate: CLLocationCoordinate2D,date:Date,subtitle: String,opt:String,path:String) {
+    let id:String
+    var score:Int
+    init(title: String, locationName: String, coordinate: CLLocationCoordinate2D,date:Date,subtitle: String,opt:String,path:String,id:String,score:Int) {
         self.title = title
         self.locationName = locationName
         self.coordinate = coordinate
@@ -26,5 +28,7 @@ class LocationPoint: NSObject, MKAnnotation
         self.subtitle = subtitle
         self.opt = opt
         self.path = path
+        self.id = id
+        self.score = score
     }
 }

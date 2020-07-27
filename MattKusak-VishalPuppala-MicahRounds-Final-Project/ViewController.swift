@@ -25,12 +25,14 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     //holds coordinates of current location
     var currCoord:CLLocationCoordinate2D = CLLocationCoordinate2D()
     //object to hold new location object when being created
-    var currPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "", path: "")
+    var currPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "", path: "", id: "",score: 0)
     //object to hold new location object that is to be viewed
-    var selctedPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "", path: "")
+    var selctedPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "", path: "",id: "",score: 0)
     var currColor:UIColor = .green
     //this is changed when the switch is moved
     var option:String = "free"
+    var currID:String = ""
+    var currScore:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         //code to request location
@@ -163,8 +165,10 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
                     let newSubtitle = dict["desc"] as! String
                     let newOpt = dict["opt"] as! String
                     let newPath = dict["path"] as! String
+                    let newID = dict["id"] as! String
+                    let newScore = dict["score"] as! Int
                     //create annotation object from extracted database values
-                    let newLocationPoint = LocationPoint(title: newTitle, locationName: newLocation, coordinate:newCoord , date: newDateObj, subtitle: newSubtitle, opt: newOpt, path: newPath)
+                    let newLocationPoint = LocationPoint(title: newTitle, locationName: newLocation, coordinate:newCoord , date: newDateObj, subtitle: newSubtitle, opt: newOpt, path: newPath,id: newID,score: newScore)
                     let now = Date()
                     //only load events that haven't ended
                     if now.compare(newDateObj).rawValue == -1
@@ -225,7 +229,9 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
                 let s = ann?.subtitle
                 let o = ann?.opt
                 let p = ann?.path
-                selctedPoint = LocationPoint(title: t!, locationName: l!, coordinate: c!, date: d!, subtitle: s!,opt: o!,path: p!)
+                let i = ann?.id
+                let sc = ann?.score
+                selctedPoint = LocationPoint(title: t!, locationName: l!, coordinate: c!, date: d!, subtitle: s!,opt: o!,path: p!,id:i!,score: sc!)
                 performSegue(withIdentifier: "gotodetail", sender: Any.self)
                
         }

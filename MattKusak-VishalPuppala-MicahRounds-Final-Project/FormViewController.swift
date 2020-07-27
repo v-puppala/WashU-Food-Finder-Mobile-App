@@ -19,21 +19,26 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //imagepath holds on to url once image is uploaded (we'll need it for detailView)
     var imagePath:String = ""
     var coord:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-    //i was orignally going to make an id but theres a swift object that creates unique ids that's easier ot implement
-    var objID:Int = 0
+    //holds string id for db object
+    var objID:String = ""
     //this will either be free or rare
     var fOpt:String = ""
     //once the form is filled out, we will have all the info to make a locationPoint object to put into DB
-    var formPoint:LocationPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "",path: "")
+    var formPoint:LocationPoint = LocationPoint(title: "", locationName: "", coordinate: CLLocationCoordinate2D(), date: Date(), subtitle: "",opt: "",path: "",id:"",score: 0)
     override func viewDidLoad() {
         super.viewDidLoad()
         let touchObject: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardRetreat) )
                view.addGestureRecognizer(touchObject)
 
     }
-    @objc override func keyboardRetreat(){
+    @objc func keyboardRetreat(){
        view.endEditing(true)
     }
+    /*override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let scroll = UIScrollView(frame: view.bounds)
+        view.addSubview(scroll)
+    }*/
     //I'm reusing some imagePicker stuff from my lab3 - Micah
     @IBAction func addImage(_ sender: Any) {
         let img = UIImagePickerController()
@@ -84,7 +89,8 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             {
                 //print(endDate.date)
                 //update object with form data included
-                formPoint = LocationPoint(title: eventTitle.text!, locationName: foodLoc.text!, coordinate: coord, date: endDate.date, subtitle: eventDescription.text!,opt: fOpt,path: imagePath)
+                let id = NSUUID().uuidString
+                formPoint = LocationPoint(title: eventTitle.text!, locationName: foodLoc.text!, coordinate: coord, date: endDate.date, subtitle: eventDescription.text!,opt: fOpt,path: imagePath,id:id,score: 0)
             }
             else
             {
@@ -111,7 +117,8 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             //I used functions child() and childByAutoId() from this firebase article, which also shoes how to add a dictionary to database
             //https://firebase.google.com/docs/database/ios/read-and-write
             //upload our current object to db as dictionary
-             db.child("locationPoints").childByAutoId().setValue(["long": Double(formPoint.coordinate.longitude), "date": formPoint.date.description, "lat": Double(formPoint.coordinate.latitude), "desc": formPoint.subtitle, "opt": formPoint.opt, "title": formPoint.title, "locationName": formPoint.locationName, "path":formPoint.path])
+            let theId = formPoint.id
+            db.child("locationPoints").child(theId).setValue(["long": Double(formPoint.coordinate.longitude), "date": formPoint.date.description, "lat": Double(formPoint.coordinate.latitude), "desc": formPoint.subtitle, "opt": formPoint.opt, "title": formPoint.title, "locationName": formPoint.locationName, "path":formPoint.path, "id":formPoint.id, "score":formPoint.score])
         }
         else{
             //something to look for in console if something isnt working

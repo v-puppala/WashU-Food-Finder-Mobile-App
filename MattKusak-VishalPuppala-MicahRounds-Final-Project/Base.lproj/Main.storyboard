@@ -282,9 +282,34 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gW2-EE-gb2">
-                                <rect key="frame" x="58" y="513" width="280" height="198"/>
+                                <rect key="frame" x="16" y="513" width="322" height="198"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8H-Mj-B5T">
+                                <rect key="frame" x="228" y="719" width="46" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="hand.thumbsup" catalog="system"/>
+                                <connections>
+                                    <action selector="upvote:" destination="V0a-2F-MH5" eventType="touchUpInside" id="DcD-Ne-qPb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwF-TM-A2q">
+                                <rect key="frame" x="294" y="719" width="44" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="hand.thumbsdown" catalog="system"/>
+                                <connections>
+                                    <action selector="downvote:" destination="V0a-2F-MH5" eventType="touchUpInside" id="A0v-mg-sZn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Legitness score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtY-AX-dR2">
+                                <rect key="frame" x="16" y="725" width="204" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Dot-eY-mJZ"/>
@@ -294,6 +319,7 @@
                         <outlet property="descriptionLabel" destination="HQq-dH-yiE" id="S5K-Ed-zJc"/>
                         <outlet property="endDateLabel" destination="HwN-KN-e1o" id="pRe-QW-Y0R"/>
                         <outlet property="foodImage" destination="gW2-EE-gb2" id="gyo-d6-DdH"/>
+                        <outlet property="legitLabel" destination="gtY-AX-dR2" id="W2i-Fg-9CW"/>
                         <outlet property="locLabel" destination="rKj-CT-2Qt" id="yCa-FX-VvT"/>
                         <outlet property="titleLabel" destination="ps5-DB-U8l" id="aZJ-o9-Zqw"/>
                     </connections>
@@ -322,6 +348,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="hand.thumbsdown" catalog="system" width="128" height="128"/>
+        <image name="hand.thumbsup" catalog="system" width="128" height="128"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
     </resources>
 </document>
