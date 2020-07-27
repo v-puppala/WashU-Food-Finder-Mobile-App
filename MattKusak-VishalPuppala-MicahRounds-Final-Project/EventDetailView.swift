@@ -56,14 +56,29 @@ class EventDetailView: UIViewController {
         let df = DateFormatter()
         df.dateFormat = "E d MMM y, h:mm a"
         titleLabel.text = detailLoc.title
-        locLabel.text = detailLoc.locationName
+        titleLabel.layer.borderWidth = 2
+        titleLabel.layer.cornerRadius = 10
+        titleLabel.layer.borderColor = UIColor.systemOrange.cgColor
+        locLabel.text = "Location: "+detailLoc.locationName
+        locLabel.layer.borderWidth = 2
+        locLabel.layer.cornerRadius = 10
+        locLabel.layer.borderColor = UIColor.systemIndigo.cgColor
         endDateLabel.text = "Lasts Until: "+df.string(from: detailLoc.date)
+        endDateLabel.layer.borderWidth = 2
+        endDateLabel.layer.cornerRadius = 10
+        endDateLabel.layer.borderColor = UIColor.systemOrange.cgColor
         descriptionLabel.text = detailLoc.subtitle
+        descriptionLabel.layer.borderWidth = 2
+        descriptionLabel.layer.cornerRadius = 10
+        descriptionLabel.layer.borderColor = UIColor.systemIndigo.cgColor
         if let url = URL(string: detailLoc.path)
         {
             if let imageData = try? Data(contentsOf: url)
             {
                 foodImage.image = UIImage(data: imageData)
+                foodImage.layer.borderColor = UIColor.systemOrange.cgColor
+                foodImage.layer.borderWidth = 2
+                //foodImage.layer.cornerRadius = 10
             }
         }
         
