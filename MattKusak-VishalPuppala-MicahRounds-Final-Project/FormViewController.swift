@@ -15,7 +15,9 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var foodLoc: UITextField!
     @IBOutlet weak var endDate: UIDatePicker!
-    @IBOutlet weak var eventDescription: UITextField!
+    //@IBOutlet weak var eventDescription: UITextField!
+    @IBOutlet var eventDescription: UITextView!
+    
     //imagepath holds on to url once image is uploaded (we'll need it for detailView)
     var imagePath:String = ""
     var coord:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -29,7 +31,10 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidLoad()
         let touchObject: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardRetreat) )
                view.addGestureRecognizer(touchObject)
-
+        let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
+        eventDescription.layer.borderWidth = 0.75
+        eventDescription.layer.borderColor = borderColor.cgColor
+        eventDescription.layer.cornerRadius = 5.0
     }
     @objc func keyboardRetreat(){
        view.endEditing(true)

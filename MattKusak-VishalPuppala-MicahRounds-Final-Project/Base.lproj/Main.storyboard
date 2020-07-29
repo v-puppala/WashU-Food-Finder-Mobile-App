@@ -162,15 +162,17 @@
                                                         <color key="textColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="start date, foods offered, etc." textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1hM-zK-4b7">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="beX-CX-L3U">
                                                         <rect key="frame" x="0.0" y="25.33333333333335" width="375" height="94.666666666666686"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="TZy-lh-Ywp"/>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="olA-wE-Bnv"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="WJU-6G-ygi"/>
                                                         </constraints>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="PYr-B0-a5D"/>
@@ -256,7 +258,7 @@
                     <navigationItem key="navigationItem" title="New Event" id="n1z-nR-2UI"/>
                     <connections>
                         <outlet property="endDate" destination="inC-ym-gt5" id="wOx-oT-Udw"/>
-                        <outlet property="eventDescription" destination="1hM-zK-4b7" id="kVv-Kg-63C"/>
+                        <outlet property="eventDescription" destination="beX-CX-L3U" id="wYZ-MR-PEG"/>
                         <outlet property="eventTitle" destination="Yfy-pj-Dty" id="9Un-nq-wqg"/>
                         <outlet property="foodLoc" destination="CZG-pH-lDF" id="hD2-cB-SCy"/>
                         <outlet property="formImage" destination="dTD-NP-UVD" id="8Kb-HF-Bij"/>
