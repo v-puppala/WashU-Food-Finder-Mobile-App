@@ -56,28 +56,28 @@ class EventDetailView: UIViewController {
         let df = DateFormatter()
         df.dateFormat = "E d MMM y, h:mm a"
         titleLabel.text = detailLoc.title
-        titleLabel.layer.borderWidth = 2
+        /*titleLabel.layer.borderWidth = 2
         titleLabel.layer.cornerRadius = 10
-        titleLabel.layer.borderColor = UIColor.systemOrange.cgColor
+        titleLabel.layer.borderColor = UIColor.systemGray.cgColor*/
         locLabel.text = "Location: "+detailLoc.locationName
-        locLabel.layer.borderWidth = 2
+        /*locLabel.layer.borderWidth = 2
         locLabel.layer.cornerRadius = 10
-        locLabel.layer.borderColor = UIColor.systemIndigo.cgColor
+        locLabel.layer.borderColor = UIColor.systemGray.cgColor*/
         endDateLabel.text = "Lasts Until: "+df.string(from: detailLoc.date)
-        endDateLabel.layer.borderWidth = 2
+        /*endDateLabel.layer.borderWidth = 2
         endDateLabel.layer.cornerRadius = 10
-        endDateLabel.layer.borderColor = UIColor.systemOrange.cgColor
+        endDateLabel.layer.borderColor = UIColor.systemGray.cgColor*/
         descriptionLabel.text = detailLoc.subtitle
-        descriptionLabel.layer.borderWidth = 2
+        /*descriptionLabel.layer.borderWidth = 2
         descriptionLabel.layer.cornerRadius = 10
-        descriptionLabel.layer.borderColor = UIColor.systemIndigo.cgColor
+        descriptionLabel.layer.borderColor = UIColor.systemGray.cgColor*/
         if let url = URL(string: detailLoc.path)
         {
             if let imageData = try? Data(contentsOf: url)
             {
                 foodImage.image = UIImage(data: imageData)
-                foodImage.layer.borderColor = UIColor.systemOrange.cgColor
-                foodImage.layer.borderWidth = 2
+                /*foodImage.layer.borderColor = UIColor.systemGray.cgColor
+                foodImage.layer.borderWidth = 2*/
                 //foodImage.layer.cornerRadius = 10
             }
         }

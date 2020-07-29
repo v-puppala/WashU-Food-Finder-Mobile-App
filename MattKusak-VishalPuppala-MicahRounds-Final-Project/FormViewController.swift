@@ -109,6 +109,22 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    @IBAction func takePic(_ sender: UIButton) {
+
+           if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera){
+
+               let imgPicker = UIImagePickerController()
+
+               imgPicker.delegate = self
+
+               imgPicker.sourceType = UIImagePickerController.SourceType.camera
+
+               self.present(imgPicker, animated: true)
+
+           }
+
+       }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
