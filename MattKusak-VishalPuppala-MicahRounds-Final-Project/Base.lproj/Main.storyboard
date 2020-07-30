@@ -62,7 +62,7 @@
                             </connections>
                         </switch>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="psS-sN-pMR">
+                            <barButtonItem image="plus" catalog="system" id="psS-sN-pMR">
                                 <connections>
                                     <action selector="addLocation:" destination="BYZ-38-t0r" id="xbE-n7-9N8"/>
                                 </connections>
@@ -348,7 +348,7 @@
                                                                     <constraint firstAttribute="width" constant="50" id="VEc-FT-931"/>
                                                                     <constraint firstAttribute="height" constant="50" id="YRP-q7-F66"/>
                                                                 </constraints>
-                                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                                 <state key="normal" image="hand.thumbsup" catalog="system"/>
                                                                 <connections>
                                                                     <action selector="upvote:" destination="V0a-2F-MH5" eventType="touchUpInside" id="DcD-Ne-qPb"/>
@@ -426,5 +426,6 @@
         <image name="hand.thumbsdown" catalog="system" width="128" height="128"/>
         <image name="hand.thumbsup" catalog="system" width="128" height="128"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
 </document>
