@@ -113,7 +113,22 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         infoLabel.isHidden = true
         
         let alertController = UIAlertController(title: "Add a food event from location?", message: "Uses your phone's current location for the pin!", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: {(alert: UIAlertAction!) in self.performSegue(withIdentifier: "gotoform", sender: (Any).self)}))
+        alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: {(alert: UIAlertAction!) in
+            let latNorthLimit = 38.6761765
+            let longEastLimit = -90.1573885
+            let latSouthLimit = 38.5617648
+            let longWestLimit = -90.3955759
+            if self.currCoord.latitude >= latSouthLimit && self.currCoord.latitude <= latNorthLimit && self.currCoord.longitude >= longWestLimit && self.currCoord.longitude <= longEastLimit
+                {
+                    self.performSegue(withIdentifier: "gotoform", sender: (Any).self)
+                }
+                else
+                {
+                    let aL = UIAlertController(title: "Cannot add location", message: "This location is not close enough to campus" , preferredStyle: .alert)
+                    aL.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                    self.present(aL,animated: true,completion: nil)
+                }
+            }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .destructive))
         self.present(alertController, animated: true, completion: nil)
         
@@ -121,9 +136,10 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         //performSegue(withIdentifier: "gotoform", sender: (Any).self)
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
+        let location = locations.last
+        
         //update class location varible
-        currCoord = location.coordinate
+        currCoord = location!.coordinate
     }
     /*
      takes user to form and holds on to coordinates associated with tap location on map
@@ -138,9 +154,26 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         let location = gestureRecognizer.location(in: myMap)
         //converts to coordinate
        currCoord = myMap.convert(location, toCoordinateFrom: myMap)
-        addButton.image = UIImage(systemName: "plus")
-        addButton.tintColor = .systemBlue
-        performSegue(withIdentifier: "gotoform", sender: (Any).self)
+        let latNorthLimit = 38.6761765
+        let longEastLimit = -90.1573885
+        let latSouthLimit = 38.5617648
+        let longWestLimit = -90.3955759
+            if currCoord.latitude >= latSouthLimit && currCoord.latitude <= latNorthLimit && currCoord.longitude >= longWestLimit && currCoord.longitude <= longEastLimit
+            {
+                addButton.image = UIImage(systemName: "plus")
+                addButton.tintColor = .systemBlue
+                performSegue(withIdentifier: "gotoform", sender: (Any).self)
+            }
+            else
+            {
+                let aL = UIAlertController(title: "Cannot add location", message: "This location is not close enough to campus" , preferredStyle: .alert)
+                aL.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                self.present(aL,animated: true,completion: nil)
+                print(currCoord)
+                
+                adding = true
+            }
+        
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
