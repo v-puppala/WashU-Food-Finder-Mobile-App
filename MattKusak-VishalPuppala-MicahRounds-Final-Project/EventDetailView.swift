@@ -26,7 +26,9 @@ class EventDetailView: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var locLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    //@IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UITextView!
+    
     @IBOutlet weak var foodImage: UIImageView!
   
     @IBOutlet weak var legitLabel: UILabel!
@@ -52,6 +54,12 @@ class EventDetailView: UIViewController {
                 self.legitLabel.text = "Legitness score: 0"
             }
         }
+        
+        let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
+        descriptionLabel.layer.borderWidth = 0.75
+        descriptionLabel.layer.borderColor = borderColor.cgColor
+        descriptionLabel.layer.cornerRadius = 5.0
+        
         //https://stackoverflow.com/questions/35700281/date-format-in-swift
         let df = DateFormatter()
         df.dateFormat = "E d MMM y, h:mm a"
