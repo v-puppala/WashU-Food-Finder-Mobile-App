@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="omq-8X-Jac">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="omq-8X-Jac">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -99,16 +99,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o4X-t8-OED" userLabel="Stack View MAIN">
-                                <rect key="frame" x="0.0" y="98" width="501" height="680"/>
+                                <rect key="frame" x="0.0" y="98" width="375" height="680"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WIc-vy-1mj" userLabel="Stack View UPPER">
-                                        <rect key="frame" x="0.0" y="0.0" width="501" height="380"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="380"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mIr-0c-U82" userLabel="Stack View MINI UPPER">
-                                                <rect key="frame" x="0.0" y="0.0" width="501" height="120"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IRx-2l-3jj" userLabel="Stack View 1">
-                                                        <rect key="frame" x="150.66666666666666" y="0.0" width="199.99999999999997" height="60"/>
+                                                        <rect key="frame" x="87.666666666666686" y="0.0" width="200" height="60"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Event Title:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvn-vn-fZ0">
                                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="20.333333333333332"/>
@@ -127,7 +127,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vjw-P6-nOt" userLabel="Stack View 2">
-                                                        <rect key="frame" x="150.66666666666666" y="60" width="199.99999999999997" height="60"/>
+                                                        <rect key="frame" x="87.666666666666686" y="60" width="200" height="60"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Location:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vn2-Jn-zax">
                                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="20.333333333333332"/>
@@ -151,10 +151,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NqN-P0-ZDj" userLabel="Stack View EVENT DES">
-                                                <rect key="frame" x="0.0" y="130" width="501" height="120"/>
+                                                <rect key="frame" x="0.0" y="130" width="375" height="120"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Description:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8O8-gR-Evv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="501" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.333333333333332"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="tM4-iE-U2L"/>
                                                         </constraints>
@@ -163,7 +163,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="beX-CX-L3U">
-                                                        <rect key="frame" x="0.0" y="25.33333333333335" width="501" height="94.666666666666686"/>
+                                                        <rect key="frame" x="0.0" y="25.33333333333335" width="375" height="94.666666666666686"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -179,16 +179,16 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vQ2-uq-ksu" userLabel="Stack View 3">
-                                                <rect key="frame" x="0.0" y="260" width="501" height="120"/>
+                                                <rect key="frame" x="0.0" y="260" width="375" height="120"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event End Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5px-lz-Ds9">
-                                                        <rect key="frame" x="0.0" y="0.0" width="501" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="inC-ym-gt5">
-                                                        <rect key="frame" x="0.0" y="20.333333333333321" width="501" height="99.666666666666686"/>
+                                                        <rect key="frame" x="0.0" y="20.333333333333321" width="375" height="99.666666666666686"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="J9n-Ij-Rld"/>
                                                         </constraints>
@@ -204,16 +204,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vQM-fP-Npu" userLabel="Stack View LOWER">
-                                        <rect key="frame" x="0.0" y="380" width="501" height="300"/>
+                                        <rect key="frame" x="0.0" y="380" width="375" height="300"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dTD-NP-UVD">
-                                                <rect key="frame" x="0.0" y="0.0" width="501" height="250"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ib7-9k-TEn" userLabel="Stack View Buttons">
-                                                <rect key="frame" x="0.0" y="250" width="501" height="50"/>
+                                                <rect key="frame" x="0.0" y="250" width="375" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzG-1D-Xka">
-                                                        <rect key="frame" x="0.0" y="0.0" width="167" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Take Photo">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -223,7 +223,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zq7-Dd-BhB">
-                                                        <rect key="frame" x="167" y="0.0" width="167" height="50"/>
+                                                        <rect key="frame" x="125" y="0.0" width="125" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="167" id="48J-iU-AIw"/>
@@ -237,7 +237,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNB-VY-o7A">
-                                                        <rect key="frame" x="334" y="0.0" width="167" height="50"/>
+                                                        <rect key="frame" x="250" y="0.0" width="125" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Dg6-EF-Q85"/>
@@ -316,7 +316,7 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSv-GO-1Fb">
                                                 <rect key="frame" x="0.0" y="118.66666666666664" width="355" height="211.33333333333337"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <mutableString key="text">Event Description (lots of text here so that I can see how this looks in the layout constraint stuff) Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</mutableString>
+                                                <string key="text">Event Description (lots of text here so that I can see how this looks in the layout constraint stuff) Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -343,11 +343,12 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8H-Mj-B5T">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="VEc-FT-931"/>
                                                                     <constraint firstAttribute="height" constant="50" id="YRP-q7-F66"/>
                                                                 </constraints>
+                                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <state key="normal" image="hand.thumbsup" catalog="system"/>
                                                                 <connections>
                                                                     <action selector="upvote:" destination="V0a-2F-MH5" eventType="touchUpInside" id="DcD-Ne-qPb"/>
@@ -355,7 +356,8 @@
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwF-TM-A2q">
                                                                 <rect key="frame" x="70" y="0.0" width="50" height="50"/>
-                                                                <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <state key="normal" image="hand.thumbsdown" catalog="system"/>
                                                                 <connections>
                                                                     <action selector="downvote:" destination="V0a-2F-MH5" eventType="touchUpInside" id="A0v-mg-sZn"/>
