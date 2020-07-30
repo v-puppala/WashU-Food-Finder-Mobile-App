@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="omq-8X-Jac">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="omq-8X-Jac">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -19,13 +19,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <gestureRecognizers/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2c-DN-Vxl">
-                                <rect key="frame" x="82" y="126" width="211" height="184"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -80,7 +73,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="psS-sN-pMR" id="m48-GZ-Wwd"/>
-                        <outlet property="infoLabel" destination="r2c-DN-Vxl" id="Po1-i2-uBL"/>
                         <outlet property="myMap" destination="Zjx-9P-noc" id="1uu-rd-paU"/>
                         <outlet property="optionSwitch" destination="vGg-Wc-9JF" id="RoQ-vw-Qch"/>
                         <segue destination="MdA-69-0MZ" kind="show" identifier="gotoform" id="5Kc-3P-PnM"/>
@@ -109,7 +101,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IRx-2l-3jj" userLabel="Stack View 1">
-                                                        <rect key="frame" x="87.666666666666742" y="0.0" width="200" height="60"/>
+                                                        <rect key="frame" x="87.666666666666686" y="0.0" width="200" height="60"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Event Title:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvn-vn-fZ0">
                                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="20.333333333333332"/>
@@ -128,7 +120,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vjw-P6-nOt" userLabel="Stack View 2">
-                                                        <rect key="frame" x="87.666666666666742" y="60" width="200" height="60"/>
+                                                        <rect key="frame" x="87.666666666666686" y="60" width="200" height="60"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Location:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vn2-Jn-zax">
                                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="20.333333333333332"/>

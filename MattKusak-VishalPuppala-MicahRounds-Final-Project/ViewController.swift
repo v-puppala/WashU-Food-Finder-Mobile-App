@@ -12,8 +12,7 @@ import FirebaseDatabase
 import CoreLocation
 class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDelegate,CLLocationManagerDelegate {
 
-    //"tutorial" label
-    @IBOutlet weak var infoLabel: UILabel!
+
     @IBOutlet weak var optionSwitch: UISwitch!
     @IBOutlet weak var myMap: MKMapView!
     
@@ -52,11 +51,11 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         isLaunched = UserDefaults.standard.bool(forKey: "launchedBefore")
         if isLaunched == false
         {
-            infoLabel.text = "Tap '+' to manually add a location, or tap the pin icon to use your current location..."
+           
             UserDefaults.standard.set(true, forKey: "launchedBefore")
         }
         else{
-            infoLabel.isHidden = true
+            //removed info label
         }
         
         
@@ -100,7 +99,7 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         myMap.addGestureRecognizer(gRecognizer)
         if isLaunched == false
         {
-            infoLabel.text = "Tap on the part of the map where the event is located..."
+            //removed infolabel
         }
         } else {
             adding = false
@@ -110,7 +109,6 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         
     }
     @IBAction func userLocation(_ sender: Any) {
-        infoLabel.isHidden = true
         
         let alertController = UIAlertController(title: "Add a food event from location?", message: "Uses your phone's current location for the pin!", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: {(alert: UIAlertAction!) in
@@ -147,7 +145,6 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
         if adding == true {
             adding = false
-        infoLabel.isHidden = true
         //stop updating location to prevent currCoord from being set again
         locationManager.stopUpdatingLocation()
         //get raw location data
