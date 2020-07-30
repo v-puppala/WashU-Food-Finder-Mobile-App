@@ -87,7 +87,9 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         
         if adding == false {
         let alertController = UIAlertController(title: "Add a food event?", message: "Tap 'Add' then tap on the map to place your pin!", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: {(alert: UIAlertAction!) in self.adding = true}))
+            alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: {(alert: UIAlertAction!) in self.adding = true; self.addButton.image = UIImage(systemName: "xmark"); self.addButton.tintColor = .systemRed
+                
+}))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .destructive))
         self.present(alertController, animated: true, completion: nil)
         
@@ -102,6 +104,8 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         }
         } else {
             adding = false
+            addButton.image = UIImage(systemName: "plus")
+            addButton.tintColor = .systemBlue
         }
         
     }
@@ -134,6 +138,8 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         let location = gestureRecognizer.location(in: myMap)
         //converts to coordinate
        currCoord = myMap.convert(location, toCoordinateFrom: myMap)
+        addButton.image = UIImage(systemName: "plus")
+        addButton.tintColor = .systemBlue
         performSegue(withIdentifier: "gotoform", sender: (Any).self)
         }
     }
