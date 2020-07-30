@@ -24,7 +24,7 @@
 		0701E1E03DEEBBDA66C00F14 /* Pods_MattKusak_VishalPuppala_MicahRounds_Final_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MattKusak_VishalPuppala_MicahRounds_Final_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5151511224C6B6EC0024AFE0 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		518923FB24C6D6030062D8F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		51E03C4424C66871001BA318 /* MattKusak-VishalPuppala-MicahRounds-Final-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MattKusak-VishalPuppala-MicahRounds-Final-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		51E03C4424C66871001BA318 /* WUFF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WUFF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E03C4724C66871001BA318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51E03C4924C66871001BA318 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		51E03C4B24C66871001BA318 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		51E03C4524C66871001BA318 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				51E03C4424C66871001BA318 /* MattKusak-VishalPuppala-MicahRounds-Final-Project.app */,
+				51E03C4424C66871001BA318 /* WUFF.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,7 +122,7 @@
 			);
 			name = "MattKusak-VishalPuppala-MicahRounds-Final-Project";
 			productName = "MattKusak-VishalPuppala-MicahRounds-Final-Project";
-			productReference = 51E03C4424C66871001BA318 /* MattKusak-VishalPuppala-MicahRounds-Final-Project.app */;
+			productReference = 51E03C4424C66871001BA318 /* WUFF.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -378,7 +378,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mattKusakVishalPuppalaMicahRoundsFinal;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WUFF;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -399,7 +399,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mattKusakVishalPuppalaMicahRoundsFinal;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WUFF;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

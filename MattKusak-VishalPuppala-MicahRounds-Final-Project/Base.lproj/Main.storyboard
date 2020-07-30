@@ -416,7 +416,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="defaultImage" width="466.66665649414062" height="346.66665649414062"/>
+        <image name="defaultImage" width="350" height="260"/>
         <image name="hand.thumbsdown" catalog="system" width="128" height="128"/>
         <image name="hand.thumbsup" catalog="system" width="128" height="128"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
