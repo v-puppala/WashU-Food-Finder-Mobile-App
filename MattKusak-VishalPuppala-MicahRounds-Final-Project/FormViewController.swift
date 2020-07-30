@@ -153,6 +153,13 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 NSLog("The \"OK\" alert occured.")
                 }))
                 self.present(a, animated: true, completion: nil)
+            }else
+            {
+                let a = UIAlertController(title: "Cannot add event", message: "Make sure all fields are filled out", preferredStyle: .alert)
+                a.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")
+                }))
+                self.present(a, animated: true, completion: nil)
             }
         }
        

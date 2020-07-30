@@ -168,9 +168,7 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
             {
                 let aL = UIAlertController(title: "Cannot add location", message: "This location is not close enough to campus" , preferredStyle: .alert)
                 aL.addAction(UIAlertAction(title: "Ok", style: .cancel))
-                self.present(aL,animated: true,completion: nil)
-                print(currCoord)
-                
+                self.present(aL,animated: true,completion: nil)                
                 adding = true
             }
         
