@@ -258,7 +258,11 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
             marker!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             let lp = annotation as? LocationPoint
             //format color (I didn't end up needing currColor)
-            if lp!.opt == "free"
+            if lp!.score < -5
+            {
+                marker!.markerTintColor = .red
+            }
+            else if lp!.opt == "free"
             {
                 marker!.markerTintColor = .green
             }
