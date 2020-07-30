@@ -16,6 +16,9 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var optionSwitch: UISwitch!
     @IBOutlet weak var myMap: MKMapView!
+    
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
     //state to determine if user has launched app before
     var isLaunched:Bool = false
     //object for detecting location
@@ -33,6 +36,8 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     var option:String = "free"
     var currID:String = ""
     var currScore:Int = 0
+    //this helps the menus for adding locations
+    var adding:Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         //code to request location
@@ -78,6 +83,14 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
     }
     //enables tap handler for manually entered locations
     @IBAction func addLocation(_ sender: Any) {
+        
+        
+        if adding == false {
+        let alertController = UIAlertController(title: "Add a food event?", message: "Tap 'Add' then tap on the map to place your pin!", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: {(alert: UIAlertAction!) in self.adding = true}))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .destructive))
+        self.present(alertController, animated: true, completion: nil)
+        
         //set gesture recognizer associated with function handleTap
         let gRecognizer = UITapGestureRecognizer(target: self, action:#selector(self.handleTap))
         gRecognizer.delegate = self
@@ -87,12 +100,21 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         {
             infoLabel.text = "Tap on the part of the map where the event is located..."
         }
+        } else {
+            adding = false
+        }
         
     }
     @IBAction func userLocation(_ sender: Any) {
         infoLabel.isHidden = true
+        
+        let alertController = UIAlertController(title: "Add a food event from location?", message: "Uses your phone's current location for the pin!", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: {(alert: UIAlertAction!) in self.performSegue(withIdentifier: "gotoform", sender: (Any).self)}))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .destructive))
+        self.present(alertController, animated: true, completion: nil)
+        
         //switch to form viewcontroller
-        performSegue(withIdentifier: "gotoform", sender: (Any).self)
+        //performSegue(withIdentifier: "gotoform", sender: (Any).self)
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
@@ -103,6 +125,8 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
      takes user to form and holds on to coordinates associated with tap location on map
      */
     @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
+        if adding == true {
+            adding = false
         infoLabel.isHidden = true
         //stop updating location to prevent currCoord from being set again
         locationManager.stopUpdatingLocation()
@@ -111,6 +135,7 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
         //converts to coordinate
        currCoord = myMap.convert(location, toCoordinateFrom: myMap)
         performSegue(withIdentifier: "gotoform", sender: (Any).self)
+        }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //we need to set the coordinate and option(free or rare) in FormViewController

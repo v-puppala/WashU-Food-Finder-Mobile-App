@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="omq-8X-Jac">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="omq-8X-Jac">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -62,7 +62,7 @@
                             </connections>
                         </switch>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="psS-sN-pMR">
+                            <barButtonItem image="plus" catalog="system" id="psS-sN-pMR">
                                 <connections>
                                     <action selector="addLocation:" destination="BYZ-38-t0r" id="xbE-n7-9N8"/>
                                 </connections>
@@ -79,6 +79,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="psS-sN-pMR" id="m48-GZ-Wwd"/>
                         <outlet property="infoLabel" destination="r2c-DN-Vxl" id="Po1-i2-uBL"/>
                         <outlet property="myMap" destination="Zjx-9P-noc" id="1uu-rd-paU"/>
                         <outlet property="optionSwitch" destination="vGg-Wc-9JF" id="RoQ-vw-Qch"/>
@@ -108,7 +109,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IRx-2l-3jj" userLabel="Stack View 1">
-                                                        <rect key="frame" x="87.666666666666686" y="0.0" width="200" height="60"/>
+                                                        <rect key="frame" x="87.666666666666742" y="0.0" width="200" height="60"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Event Title:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvn-vn-fZ0">
                                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="20.333333333333332"/>
@@ -127,7 +128,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vjw-P6-nOt" userLabel="Stack View 2">
-                                                        <rect key="frame" x="87.666666666666686" y="60" width="200" height="60"/>
+                                                        <rect key="frame" x="87.666666666666742" y="60" width="200" height="60"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Location:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vn2-Jn-zax">
                                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="20.333333333333332"/>
@@ -206,7 +207,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vQM-fP-Npu" userLabel="Stack View LOWER">
                                         <rect key="frame" x="0.0" y="380" width="375" height="300"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dTD-NP-UVD">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="dTD-NP-UVD">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ib7-9k-TEn" userLabel="Stack View Buttons">
@@ -326,7 +327,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dB2-b4-JbJ" userLabel="Stack View LOWER">
                                         <rect key="frame" x="0.0" y="340" width="355" height="330"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gW2-EE-gb2">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="gW2-EE-gb2">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="260"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vPg-JZ-qgT">
@@ -423,8 +424,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="defaultImage" width="466.66665649414062" height="346.66665649414062"/>
         <image name="hand.thumbsdown" catalog="system" width="128" height="128"/>
         <image name="hand.thumbsup" catalog="system" width="128" height="128"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
 </document>
