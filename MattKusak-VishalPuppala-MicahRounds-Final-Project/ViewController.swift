@@ -239,6 +239,11 @@ class ViewController: UIViewController, MKMapViewDelegate,UIGestureRecognizerDel
                     {
                         self.myMap.addAnnotation(newLocationPoint)
                     }
+                   else
+                    {
+                        //remove past events from db
+                        db.child("locationPoints").child(newID).removeValue()
+                    }
                     
                 }
             }
